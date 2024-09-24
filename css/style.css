@@ -21,6 +21,7 @@ body {
     --black: #000;
     --dropdown-icon: #767676;
     --dropdown-light: #d7d7d7;
+    --checkbox-color: #00809d;
 }
 
 header {
@@ -225,6 +226,12 @@ header .header-left {
     color: #00000080;
 }
 
+.dropdown-bars-content .side-text {
+    font-size: 0.8rem;
+    margin: 0 8px 0 auto;
+    color: #00000080;
+}
+
 .privacy {
     color: var(--icon-color);
     font-size: 0.8rem;
@@ -411,4 +418,54 @@ header .header-left {
 
 .search-container .fa-keyboard {
     right: 20px;
+}
+
+.settings {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.settings p {
+    margin: 2px 0 0 32px;
+    width: 100%;
+    color: #000000cc;
+}
+
+.settings .text-sub {
+    color: #000000a6;
+    margin-top: 8px;
+}
+
+.lab-item {
+    width: 80%;
+    background-color: #f1f1f1;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    height: 120px;
+    border-radius: 5px;
+}
+
+.lab-item p {
+    margin: 0;
+}
+
+.lab-inputone,
+.lab-inputtwo {
+    margin-left: 40px;
+}
+
+/* Style the radio button itself */
+input[type="radio"]:checked {
+    accent-color: var(--checkbox-color);
+}
+
+.labs-text {
+    font-size: 0.7rem;
+}
+
+input[type="radio"] {
+    height: 10px;
+    transform: scale(1.5);
+    margin-right: 12px;
 }

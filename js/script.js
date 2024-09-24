@@ -70,6 +70,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Prevent click inside dropdown content from closing the dropdown
+    if (dropdownContent) {
+        dropdownContent.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+    }
+
+    if (dropdownBarsContent) {
+        dropdownBarsContent.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+    }
+
+    dropdownSubSubContents.forEach(dropdownSubSubContent => {
+        dropdownSubSubContent.addEventListener('click', (event) => {
+            event.stopPropagation();
+        });
+    });
+
     window.addEventListener('click', () => {
         if (dropdownContent && dropdownContent.classList.contains('show')) {
             dropdownContent.classList.remove('show');
