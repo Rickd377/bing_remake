@@ -7,8 +7,9 @@ body {
     box-sizing: border-box;
     width: 100%;
     height: 100vh;
-    background-image: url(https://images8.alphacoders.com/115/thumb-1920-1158584.jpg);
+    background-image: url(../assets/backgrounds/background.webp);
     background-size: cover;
+    background-position: center;
     padding: 0 190px;
 }
 
@@ -150,8 +151,8 @@ header .header-left {
     display: none;
     position: absolute;
     background-color: var(--white);
-    min-width: 330px;
-    max-height: 93.5vh;
+    min-width: 320px;
+    max-height: 93.6vh;
     overflow-y: scroll;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -242,6 +243,7 @@ header .header-left {
 
 .privacy span:hover {
     text-decoration: underline;
+    background: #f4f4f4;
 }
 
 .dropdown-sub-sub-content {
@@ -464,8 +466,135 @@ input[type="radio"]:checked {
     font-size: 0.7rem;
 }
 
-input[type="radio"] {
+.lab-item input[type="radio"] {
     height: 10px;
     transform: scale(1.5);
     margin-right: 12px;
+    cursor: pointer;
+}
+
+.custom-inputone,
+.custom-inputtwo,
+.custom-inputthree {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.custom-item input[type="radio"] {
+    height: 10px;
+    transform: scale(1.6);
+    cursor: pointer;
+}
+
+.custom-item .fa-newspaper {
+    margin-left: auto;
+}
+
+/* Style the switch container */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 20px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: var(--checkbox-color);
+}
+
+input:checked + .slider:before {
+    transform: translateX(14px);
+}
+
+.custom-item .custom-inputone,
+.custom-item .custom-inputtwo,
+.custom-item .custom-inputthree,
+.custom-item .custom-inputfour {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: black;
+    padding-left: 50px;
+}
+
+.custom-item .custom-inputone:hover,
+.custom-item .custom-inputtwo:hover,
+.custom-item .custom-inputthree:hover,
+.custom-item .custom-inputfour:hover {
+    background-color: #f1f1f1;
+}
+
+/* background switcher */
+.background-switcher {
+    position: absolute;
+    top: 47%;
+    right: 170px;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 5px;
+}
+
+.background-switcher button {
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #000000b3;
+    color: var(--white);
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Ensure the tooltip is positioned relative to the button */
+}
+
+.background-switcher i:not(.fa-location-dot) {
+    font-size: 1.2rem;
+    color: #ffffffb3;
+    transition: color 0.2s;
+}
+
+.background-switcher button:hover i:not(.fa-location-dot) {
+    color: var(--white); /* Change this to your desired hover color */
+}
+
+.background-switcher button span {
+    margin-left: 10px;
+    font-size: 0.9rem;
 }

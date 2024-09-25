@@ -72,11 +72,12 @@
             <div class="dropdown-bars">
                 <i class="fas fa-bars dropdownBarsBtn"></i>
                 <div class="dropdown-bars-content">
-                    <a href="#" class="first-item"><i class="fas fa-square-plus"></i> Verzamelingen</a>
+                    <a href="#" class="first-item"><i class="far fa-square-plus"></i> Verzamelingen</a>
 
                     <!-- instellingen -->
                     <div class="dropdown-sub-sub">
-                        <a href="#" class="drop-toggle"><i class="fas fa-cog"></i> Instellingen <i class="fas fa-chevron-down"></i></a>
+                        <a href="#" class="drop-toggle"><i class="fas fa-cog"></i> Instellingen <i
+                                class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-sub-sub-content">
                             <a class="settings" href="#">
                                 <p class="title-sub">Taal</p>
@@ -98,15 +99,17 @@
                         </div>
                     </div>
 
-                    <a href="#"><i class="fas fa-shield-alt"></i> Veilig Zoeken <p class="side-text">Gemiddeld</p></a>
+                    <a href="#"><i class="fas fa-lock"></i> Veilig Zoeken <p class="side-text">Gemiddeld</p></a>
 
                     <!-- labs -->
                     <div class="dropdown-sub-sub">
-                        <a href="#" class="drop-toggle"><i class="fas fa-user-shield"></i> Labs <i class="fas fa-chevron-down"></i></a>
+                        <a href="#" class="drop-toggle"><i class="fas fa-user-shield"></i> Labs <i
+                                class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-sub-sub-content">
                             <a href="#" class="lab-item">
                                 <p class="labs-title">Chatreactie op resultaatpagina</p>
-                                <p class="labs-text">Kies hoe vaak u chatreacties wilt zien op de pagina met zoekresultaten</p>
+                                <p class="labs-text">Kies hoe vaak u chatreacties wilt zien op de pagina met
+                                    zoekresultaten</p>
                                 <div class="lab-inputone">
                                     <input type="radio" name="chat" id="chat1">
                                     <label for="chat1">Automatisch (Standaard)</label>
@@ -119,27 +122,66 @@
                         </div>
                     </div>
 
-                    <a href="#"><i class="fas fa-history"></i> Zoekgeschiedenis</a>
+                    <a href="#"><i class="fas fa-clock"></i> Zoekgeschiedenis</a>
                     <a href="#"><i class="fas fa-shield-halved"></i> Privacy</a>
                     <a href="#"><i class="fas fa-message"></i> Feedback</a>
 
                     <div class="dropdown-sub-sub">
-                        <a href="#" class="drop-toggle"><i class="fas fa-palette"></i> Vormgeving <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-sub-sub-content">
-                            <a href="#">Option 1</a>
-                            <a href="#">Option 2</a>
-                            <a href="#">Option 3</a>
+                        <a href="#" class="drop-toggle"><i class="fas fa-palette"></i> Vormgeving <i
+                                class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-sub-sub-content custom-item">
+                            <a class="custom-inputone">
+                                <input type="radio" name="box" id="box1" checked>
+                                <label for="box1">Licht</label>
+                                <i class="fa-regular fa-newspaper"></i>
+                            </a>
+                            <a class="custom-inputtwo">
+                                <input type="radio" name="box" id="box2">
+                                <label for="box2">Donker</label>
+                                <i class="fa-solid fa-newspaper"></i>
+                            </a>
+                            <a class="custom-inputthree">
+                                <input type="radio" name="box" id="box3">
+                                <label for="box3">Systeemstandaard</label>
+                                <i class="fa-regular fa-newspaper"></i>
+                            </a>
                         </div>
                     </div>
 
                     <a href="#"><i class="fas fa-user"></i> Uw feed personaliseren</a>
-                    
+
                     <div class="dropdown-sub-sub last-item">
-                        <a href="#" class="drop-toggle"><i class="fas fa-house"></i> Uw startpagina aanpassen <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-sub-sub-content">
-                            <a href="#">Option 1</a>
-                            <a href="#">Option 2</a>
-                            <a href="#">Option 3</a>
+                        <a href="#" class="drop-toggle"><i class="fas fa-house"></i> Uw startpagina aanpassen <i
+                                class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-sub-sub-content custom-item">
+                            <div class="custom-inputone">
+                                <label for="switch1">Menubalk weergeven</label>
+                                <label class="switch">
+                                    <input type="checkbox" id="switch1" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="custom-inputtwo">
+                                <label for="switch2">Nieuws en interesses weergeven</label>
+                                <label class="switch">
+                                    <input type="checkbox" id="switch2" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="custom-inputthree">
+                                <label for="switch3">Trending op Bing weergeven</label>
+                                <label class="switch">
+                                    <input type="checkbox" id="switch3" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            <div class="custom-inputfour">
+                                <label for="switch4">Afbeelding startpagina weergeven</label>
+                                <label class="switch">
+                                    <input type="checkbox" id="switch4" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
                         </div>
                     </div>
 
@@ -157,6 +199,7 @@
             </div>
         </div>
     </header>
+    <!-- searchbar -->
     <div class="search-container">
         <i class="fa-solid fa-magnifying-glass"></i>
         <input type="text" name="search" id="search" placeholder="Zoeken op het web" autocomplete="off">
@@ -165,7 +208,15 @@
         <i class="fa-solid fa-keyboard"></i>
         <a href="https://copilot.microsoft.com/" target="_blank" class="copilot-link"></a>
     </div>
+
+    <div class="background-switcher">
+        <button><i class="fas fa-location-dot"></i><span> Info</span></button>
+        <button id="prevBackground"><i class="fas fa-angle-left"></i></button>
+        <button id="nextBackground"><i class="fas fa-angle-right"></i></button>
+    </div>
+
     <script src="js/script.js"></script>
+    <script src="js/background.js"></script>
 </body>
 
 </html>
