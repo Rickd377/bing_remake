@@ -9,8 +9,9 @@ body {
     height: 100vh;
     background-image: url(../assets/backgrounds/background.webp);
     background-size: cover;
-    background-position: center;
-    padding: 0 190px;
+    background-position: 50% 0;
+    background-attachment: fixed;
+    padding: 0 90px;
 }
 
 :root {
@@ -31,6 +32,9 @@ header {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+    padding: 0 100px;
+    position: relative;
+    z-index: 50000;
 }
 
 header .header-left a {
@@ -305,12 +309,35 @@ header .header-left {
 }
 
 
-.search-container {
-    position: relative;
-    display: inline-block;
+.padding-area {
+    position: fixed;
+    top: 0;
     left: 50%;
-    top: 30%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
+    width: 100%;
+    height: calc(14% + 50px);
+    background-image: inherit;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 50% 0;
+    z-index: 3;
+}
+
+.search-container {
+    position: sticky;
+    top: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    transition: top 0.3s ease;
+    width: 100%;
+    max-width: 750px;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .search-container .copilot-link {
@@ -318,8 +345,8 @@ header .header-left {
     right: -60px;
     top: 50%;
     transform: translateY(-50%);
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     background-color: var(--white);
     background-image: url(../assets/copilot.webp);
     background-size: 70%;
@@ -395,17 +422,18 @@ header .header-left {
 .search-container input {
     padding-left: 50px;
     padding-right: 90px;
-    width: 33vw;
+    width: 50vw;
     height: 50px;
     border: none;
     outline: none;
     border-radius: 30px;
     font-size: 0.95rem;
+    box-sizing: border-box;
 }
 
 .search-container input:focus {
-    border-radius: 12px;
-    border: 1.5px solid var(--focus-color);
+border-radius: 12px;
+box-shadow: inset 0 0 0 1px var(--focus-color);
 }
 
 .search-container .fa-microphone {
@@ -597,4 +625,231 @@ input:checked + .slider:before {
 .background-switcher button span {
     margin-left: 10px;
     font-size: 0.9rem;
+}
+
+/* item slider */
+.item-slider {
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 46%;
+    transform: translate(0, -50%);
+    width: 100%;
+    overflow: hidden;
+}
+
+.slider-container {
+    overflow: hidden;
+    width: 91.4%; /* Adjust based on button width */
+    margin: 0 auto;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.2s ease-in-out;
+}
+
+.slider-item {
+    min-width: calc(100% / 8); /* 8 items visible at a time */
+    box-sizing: border-box;
+    padding: 5px; /* Increase padding for larger items */
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.slider-item:last-child {
+    margin-right: 0;
+}
+
+.item-title {
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 5px 12px; /* Increase padding for larger title area */
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center; /* Center text horizontally */
+    font-size: 0.8rem;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+}
+
+.slider-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    z-index: -1;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    aspect-ratio: 50 / 24;
+}
+
+.slider-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+.slider-button i {
+    font-size: 2rem;
+}
+
+#prevItem {
+    left: 0;
+}
+
+#nextItem {
+    right: 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px; /* Adjust the gap between items as needed */
+    padding: 30px 13px; /* Add padding around the grid */
+    position: relative;
+    top: 41%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ffffffb3;
+    border-radius: 10px;
+    width: 90%;
+}
+
+.card {
+    background-color: var(--white);
+    text-align: left;
+    border: 1px solid var(--light-gray);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: filter 0.3s ease; /* Smooth transition for the filter effect */
+    position: relative;
+}
+
+.card:not(.span-2) {
+    aspect-ratio: 1/1;
+}
+
+.span-2 {
+    grid-column: span 2;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 0px 20px;
+}
+
+.card:not(.span-2) img {
+    width: 100%;
+    height: 50%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    object-fit: cover;
+}
+
+.span-2 .card-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 15px;
+    position: absolute;
+    bottom: 40px;
+}
+
+.card-footer span {
+    font-family: 'Roboto', sans-serif;
+}
+
+.span-2 .card-footer {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 15px;
+    color: var(--white);
+    margin-left: 0;
+}
+
+.card:hover {
+    box-shadow: 0 4px 10px #0000003b;
+}
+
+.card:not(.span-2) .card-title {
+    margin: 0 15px;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.card .upload-time {
+    font-size: 0.8rem;
+    margin: 5px 15px;
+    font-weight: 300;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 15px;
+    margin-left: 15px;
+    position: absolute;
+    bottom: 5px;
+}
+
+.card-footer i {
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.card:hover img,
+.span-2:hover {
+    filter: brightness(0.95); /* Darken the image or background */
+}
+
+.span-id-1 {
+    background-image: url(https://th.bing.com/th?id=ORMS.72737d727a9a865def82a581f2b62caf&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1&p=0);
+}
+
+.span-id-2 {
+    background-image: url(https://th.bing.com/th?id=ORMS.1281e7f3492a6f62e83c98da50570bce&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1&p=0);
+}
+
+.span-id-3 {
+    background-image: url(https://th.bing.com/th?id=ORMS.664cd9f0d6bc04481f48be1d561132ca&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1&p=0);
+}
+
+.span-id-4 {
+    position: relative; /* Ensure the pseudo-element is positioned relative to the card */
+    background-image: url(https://th.bing.com/th?id=ORMS.b5a48820686fe5d5c7348629c6ce4a0a&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1&p=0);
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px; /* Ensure the border radius matches the card */
+    overflow: hidden; /* Ensure the pseudo-element does not overflow the card */
+}
+
+.span-id-4::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 10%, black);
+    border-radius: inherit; /* Ensure the border radius matches the card */
+    pointer-events: none; /* Ensure the overlay does not interfere with interactions */
 }

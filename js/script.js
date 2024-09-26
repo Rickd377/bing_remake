@@ -47,4 +47,43 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.show').forEach(el => el.classList.remove('show'));
         document.querySelectorAll('.rotate-180').forEach(el => el.classList.remove('rotate-180'));
     });
+
+    // slider container 
+    const sliderTrack = document.querySelector('.slider-track');
+    const prevButton = document.getElementById('prevItem');
+    const nextButton = document.getElementById('nextItem');
+    const itemsVisible = 8;
+    const itemsToMove = 6; // Number of items to move on button click
+    const itemWidth = sliderTrack.querySelector('.slider-item').offsetWidth;
+    const offset = 2; // Offset in pixels to ensure proper alignment
+    let currentIndex = 0;
+    
+    const updateSlider = () => {
+        sliderTrack.style.transform = `translateX(calc(-${currentIndex * itemWidth}px - ${offset}px))`;
+    };
+    
+    prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex = Math.max(currentIndex - itemsToMove, 0);
+            updateSlider();
+        }
+    });
+    
+    nextButton.addEventListener('click', () => {
+        if (currentIndex < sliderTrack.children.length - itemsVisible) {
+            currentIndex = Math.min(currentIndex + itemsToMove, sliderTrack.children.length - itemsVisible);
+            updateSlider();
+        }
+    });
+});
+
+document.addEventListener('scroll', function() {
+    const searchContainer = document.querySelector('.search-container');
+    const scrollPosition = window.scrollY;
+
+    if (scrollPosition > 0) {
+        searchContainer.style.top = '7%'; // Top value when scrolling
+    } else {
+        searchContainer.style.top = '18%'; // Top value on the landing page
+    }
 });
