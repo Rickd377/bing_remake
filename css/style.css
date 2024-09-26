@@ -15,15 +15,35 @@ body {
 }
 
 :root {
+    --white: #ffffff;
+    --black: #000000;
+
+    --white-20: #ffffff33;
+    --white-40: #ffffff66;
+    --white-60: #ffffff99;
+    --white-80: #ffffffcc;
+
+    --black-10: #0000001a;
+    --black-20: #00000033;
+    --black-40: #00000066;
+    --black-50: #00000080;
+    --black-60: #00000099;
+    --black-80: #000000cc;
+
+    --gray-super-light: #f1f1f1;
+    --gray-light: #dddddd;
+    --gray-light-shade: #d7d7d7;
+    --gray-mid-light: #cccccc;
+    --gray: #888;
+    --gray-dark: #767676;
+
+    --microsoft-red: #f65314;
+    --microsoft-green: #7cbb00;
+    --microsoft-blue: #00a1f1;
+    --microsoft-yellow: #ffbb00;
+
     --focus-color: #2f5de6;
-    --icon-color: #767676;
-    --header-text-color: #ffffffcc;
-    --white: #fff;
-    --light-gray: #ddd;
-    --black: #000;
-    --dropdown-icon: #767676;
-    --dropdown-light: #d7d7d7;
-    --checkbox-color: #00809d;
+    --radio-color: #00809d;
 }
 
 header {
@@ -34,13 +54,13 @@ header {
     gap: 20px;
     padding: 0 100px;
     position: relative;
-    z-index: 50000;
+    z-index: 5000;
 }
 
 header .header-left a {
     font-size: 0.8rem;
     text-decoration: none;
-    color: var(--header-text-color);
+    color: var(--white-80);
 }
 
 header .header-left a:hover {
@@ -69,7 +89,7 @@ header .header-left {
     position: absolute;
     background-color: var(--white);
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px #00000033;
+    box-shadow: 0px 8px 16px 0px var(--black-20);
     z-index: 1;
     border-radius: 5px;
 }
@@ -87,14 +107,14 @@ header .header-left {
 }
 
 .dropdown-content a {
-    color: #000000b3 !important;
+    color: var(--black-80) !important;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
 .dropdown-content a:hover {
-    background-color: #f1f1f1;
+    background-color: var(--gray-super-light);
     color: var(--black) !important;
 }
 
@@ -103,7 +123,7 @@ header .header-left {
 }
 
 .dropdown .reis {
-    border-bottom: 1px solid var(--light-gray);
+    border-bottom: 1px solid var(--gray-light);
 }
 
 .dropdownBtn {
@@ -128,9 +148,9 @@ header .header-left {
     position: absolute;
     left: 100%;
     top: 0;
-    background-color: #f9f9f9;
+    background-color: var(--white);
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px #00000033;
+    box-shadow: 0px 8px 16px 0px var(--black-20);
     z-index: 1;
     border-radius: 5px;
 }
@@ -158,22 +178,18 @@ header .header-left {
     min-width: 320px;
     max-height: 93.6vh;
     overflow-y: scroll;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px var(--black-20);
     z-index: 1;
     border-radius: 5px;
     right: -10px;
     top: 40px;
     padding-top: 10px;
     scrollbar-width: thin;
-    scrollbar-color: #888 #f1f1f1;
+    scrollbar-color: var(--gray) var(--gray-super-light);
 }
 
 .arrow.rotate {
     transform: rotate(180deg);
-}
-
-.last-drop-item {
-    border-bottom: 1px solid var(--light-gray);
 }
 
 .dropdown-bars-content::-webkit-scrollbar {
@@ -181,13 +197,13 @@ header .header-left {
 }
 
 .dropdown-bars-content::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: var(--gray-super-light);
 }
 
 .dropdown-bars-content::-webkit-scrollbar-thumb {
-    background-color: #888; 
+    background-color: var(--gray); 
     border-radius: 10px;
-    border: 2px solid #f1f1f1;
+    border: 2px solid var(--gray-super-light);
 }
 
 .dropdown-bars-content a {
@@ -199,11 +215,11 @@ header .header-left {
 }
 
 .first-item {
-    border-bottom: 1px solid var(--light-gray);
+    border-bottom: 1px solid var(--gray-light);
 }
 
 .last-item {
-    border-bottom: 1px solid var(--light-gray);
+    border-bottom: 1px solid var(--gray-light);
 }
 
 .dropdown-bars-content a:last-child:hover {
@@ -212,12 +228,12 @@ header .header-left {
 }
 
 .dropdown-bars-content a:hover {
-    background-color: #f1f1f1;
-    color: #000000cc;
+    background-color: var(--gray-super-light);
+    color: var(--black-80);
 }
 
 .dropdown-bars-content i:not(.fa-chevron-down) {
-    color: var(--dropdown-icon);
+    color: var(--gray);
     margin-right: 16px;
     height: 1rem;
     font-size: 1.1rem;
@@ -228,17 +244,17 @@ header .header-left {
     margin-left: auto;
     margin-right: 8px;
     font-size: 1rem;
-    color: #00000080;
+    color: var(--black-50);
 }
 
 .dropdown-bars-content .side-text {
     font-size: 0.8rem;
     margin: 0 8px 0 auto;
-    color: #00000080;
+    color: var(--black-50);
 }
 
 .privacy {
-    color: var(--icon-color);
+    color: var(--gray);
     font-size: 0.8rem;
     margin-left: 16px;
     line-height: 1.2;
@@ -247,7 +263,7 @@ header .header-left {
 
 .privacy span:hover {
     text-decoration: underline;
-    background: #f4f4f4;
+    background: var(--gray-super-light);
 }
 
 .dropdown-sub-sub-content {
@@ -293,21 +309,20 @@ header .header-left {
 }
 
 .red {
-    background-color: #f65314;
+    background-color: var(--microsoft-red);
 }
 
 .green {
-    background-color: #7cbb00;
+    background-color: var(--microsoft-green);
 }
 
 .blue {
-    background-color: #00a1f1;
+    background-color: var(--microsoft-blue);
 }
 
 .yellow {
-    background-color: #ffbb00;
+    background-color: var(--microsoft-yellow);
 }
-
 
 .padding-area {
     position: fixed;
@@ -329,11 +344,11 @@ header .header-left {
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
-    transition: top 0.3s ease;
+    transition: top 0.2s ease;
     width: 100%;
     max-width: 750px;
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: var(--white-80);
+    box-shadow: 0 2px 4px var(--black-10);
     border-radius: 30px;
     display: flex;
     align-items: center;
@@ -371,22 +386,22 @@ header .header-left {
 }
 
 .header-right .fa-bars {
-    color: white;
+    color: var(--white);
     font-size: 1.3rem;
     padding: 5px;
     cursor: pointer;
 }
 
 .header-right .fa-trophy {
-    color: white;
+    color: var(--white);
     width: 25px;
     height: 25px;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.3); /* Base transparent border */
+    border: 2px solid var(--white-40); /* Base transparent border */
     display: flex; /* Use flexbox */
     align-items: center; /* Center vertically */
     justify-content: center; /* Center horizontally */
-    padding: 2px 1px 0 2px;
+    padding: 4px 2px 0 3px;
 }
 
 .header-right .aanmelden,
@@ -416,7 +431,7 @@ header .header-left {
 
 .search-container .fa-magnifying-glass {
     left: 20px;
-    color: var(--icon-color);
+    color: var(--gray);
 }
 
 .search-container input {
@@ -432,8 +447,8 @@ header .header-left {
 }
 
 .search-container input:focus {
-border-radius: 12px;
-box-shadow: inset 0 0 0 1px var(--focus-color);
+    border-radius: 12px;
+    box-shadow: inset 0 0 0 1px var(--focus-color);
 }
 
 .search-container .fa-microphone {
@@ -458,17 +473,17 @@ box-shadow: inset 0 0 0 1px var(--focus-color);
 .settings p {
     margin: 2px 0 0 32px;
     width: 100%;
-    color: #000000cc;
+    color: var(--black-80);
 }
 
 .settings .text-sub {
-    color: #000000a6;
+    color: var(--black-10);
     margin-top: 8px;
 }
 
 .lab-item {
     width: 80%;
-    background-color: #f1f1f1;
+    background-color: var(--gray-super-light);
     margin: auto;
     display: flex;
     flex-wrap: wrap;
@@ -487,7 +502,7 @@ box-shadow: inset 0 0 0 1px var(--focus-color);
 
 /* Style the radio button itself */
 input[type="radio"]:checked {
-    accent-color: var(--checkbox-color);
+    accent-color: var(--radio-color);
 }
 
 .labs-text {
@@ -542,7 +557,7 @@ input[type="radio"]:checked {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: var(--gray-mid-light);
     transition: .4s;
     border-radius: 20px;
 }
@@ -554,13 +569,13 @@ input[type="radio"]:checked {
     width: 16px;
     left: 2px;
     bottom: 2px;
-    background-color: white;
+    background-color: var(--white);
     transition: .4s;
     border-radius: 50%;
 }
 
 input:checked + .slider {
-    background-color: var(--checkbox-color);
+    background-color: var(--radio-color);
 }
 
 input:checked + .slider:before {
@@ -577,7 +592,7 @@ input:checked + .slider:before {
     padding: 10px;
     font-size: 0.8rem;
     text-decoration: none;
-    color: black;
+    color: var(--black);
     padding-left: 50px;
 }
 
@@ -585,7 +600,7 @@ input:checked + .slider:before {
 .custom-item .custom-inputtwo:hover,
 .custom-item .custom-inputthree:hover,
 .custom-item .custom-inputfour:hover {
-    background-color: #f1f1f1;
+    background-color: var(--gray-super-light);
 }
 
 /* background switcher */
@@ -603,18 +618,17 @@ input:checked + .slider:before {
     cursor: pointer;
     border: none;
     border-radius: 4px;
-    background-color: #000000b3;
+    background-color: var(--black-80);
     color: var(--white);
     padding: 10px 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative; /* Ensure the tooltip is positioned relative to the button */
 }
 
 .background-switcher i:not(.fa-location-dot) {
     font-size: 1.2rem;
-    color: #ffffffb3;
+    color: var(--white-80);
     transition: color 0.2s;
 }
 
@@ -640,7 +654,7 @@ input:checked + .slider:before {
 
 .slider-container {
     overflow: hidden;
-    width: 91.4%; /* Adjust based on button width */
+    width: 91.4%;
     margin: 0 auto;
 }
 
@@ -652,11 +666,11 @@ input:checked + .slider:before {
 .slider-item {
     min-width: calc(100% / 8); /* 8 items visible at a time */
     box-sizing: border-box;
-    padding: 5px; /* Increase padding for larger items */
+    padding: 5px;
     position: relative;
     display: flex;
-    flex-direction: column; /* Align items vertically */
-    align-items: center; /* Center items horizontally */
+    flex-direction: column;
+    align-items: center;
 }
 
 .slider-item:last-child {
@@ -665,14 +679,14 @@ input:checked + .slider:before {
 
 .item-title {
     width: 100%;
-    background-color: black;
-    color: white;
-    padding: 5px 12px; /* Increase padding for larger title area */
+    background-color: var(--black);
+    color: var(--white);
+    padding: 5px 12px;
     box-sizing: border-box;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: center; /* Center text horizontally */
+    text-align: center;
     font-size: 0.8rem;
     border-top-right-radius: 6px;
     border-top-left-radius: 6px;
@@ -691,7 +705,7 @@ input:checked + .slider:before {
 .slider-button {
     background-color: transparent;
     border: none;
-    color: white;
+    color: var(--white);
     padding: 10px;
     cursor: pointer;
     position: absolute;
@@ -715,15 +729,15 @@ input:checked + .slider:before {
 .grid-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 10px; /* Adjust the gap between items as needed */
-    padding: 30px 13px; /* Add padding around the grid */
+    gap: 10px;
+    padding: 30px 13px;
     position: relative;
     top: 41%;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #ffffffb3;
+    background-color: var(--white-60);
     border-radius: 10px;
-    width: 90%;
+    width: 92%;
 }
 
 .card {
@@ -731,8 +745,8 @@ input:checked + .slider:before {
     text-align: left;
     border: 1px solid var(--light-gray);
     border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: filter 0.3s ease; /* Smooth transition for the filter effect */
+    box-shadow: 0 2px 4px var(--black-10);
+    transition: all 0.2s ease;
     position: relative;
 }
 
@@ -784,14 +798,14 @@ input:checked + .slider:before {
 }
 
 .card:hover {
-    box-shadow: 0 4px 10px #0000003b;
+    box-shadow: 0 4px 10px var(--black-60);
 }
 
 .card:not(.span-2) .card-title {
     margin: 0 15px;
     font-size: 1.3rem;
     font-weight: 500;
-    color: rgba(0, 0, 0, 0.8);
+    color: var(--black-80);
 }
 
 .card .upload-time {
@@ -818,7 +832,7 @@ input:checked + .slider:before {
 
 .card:hover img,
 .span-2:hover {
-    filter: brightness(0.95); /* Darken the image or background */
+    filter: brightness(0.95);
 }
 
 .span-id-1 {
@@ -834,12 +848,12 @@ input:checked + .slider:before {
 }
 
 .span-id-4 {
-    position: relative; /* Ensure the pseudo-element is positioned relative to the card */
+    position: relative;
     background-image: url(https://th.bing.com/th?id=ORMS.b5a48820686fe5d5c7348629c6ce4a0a&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1&p=0);
     background-size: cover;
     background-position: center;
-    border-radius: 10px; /* Ensure the border radius matches the card */
-    overflow: hidden; /* Ensure the pseudo-element does not overflow the card */
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .span-id-4::before {
@@ -849,7 +863,7 @@ input:checked + .slider:before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, transparent 10%, black);
-    border-radius: inherit; /* Ensure the border radius matches the card */
-    pointer-events: none; /* Ensure the overlay does not interfere with interactions */
+    background: linear-gradient(transparent 10%, var(--black));
+    border-radius: inherit;
+    pointer-events: none;
 }
