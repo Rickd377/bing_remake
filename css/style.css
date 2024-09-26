@@ -52,9 +52,11 @@ header {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    padding: 0 100px;
-    position: relative;
+    position: fixed;
     z-index: 5000;
+    width: 85%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 header .header-left a {
@@ -324,52 +326,6 @@ header .header-left {
     background-color: var(--microsoft-yellow);
 }
 
-.padding-area {
-    position: fixed;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100%;
-    height: calc(14% + 50px);
-    background-image: inherit;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: 50% 0;
-    z-index: 3;
-}
-
-.search-container {
-    position: sticky;
-    top: 18%;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-    transition: top 0.2s ease;
-    width: 100%;
-    max-width: 750px;
-    background: var(--white-80);
-    box-shadow: 0 2px 4px var(--black-10);
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.search-container .copilot-link {
-    position: absolute;
-    right: -60px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 45px;
-    height: 45px;
-    background-color: var(--white);
-    background-image: url(../assets/copilot.webp);
-    background-size: 70%;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 50%;
-}
-
 .profile-img {
     width: 33px;
     height: 33px;
@@ -417,6 +373,53 @@ header .header-left {
     text-decoration: none;
     font-size: 0.8rem;
 }
+
+.padding-area {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: calc(14% + 50px);
+    background-image: inherit;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 50% 0;
+    z-index: 3;
+}
+
+.search-container {
+    position: sticky;
+    top: 0%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    transition: top 0.2s ease;
+    width: 100%;
+    max-width: 750px;
+    background: var(--white-80);
+    box-shadow: 0 2px 4px var(--black-10);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-container .copilot-link {
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    background-color: var(--white);
+    background-image: url(../assets/copilot.webp);
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+}
+
 
 .search-container i,
 .search-container img {
@@ -606,7 +609,7 @@ input:checked + .slider:before {
 /* background switcher */
 .background-switcher {
     position: absolute;
-    top: 47%;
+    top: 41%;
     right: 170px;
     transform: translateY(-50%);
     display: flex;
@@ -681,7 +684,7 @@ input:checked + .slider:before {
     width: 100%;
     background-color: var(--black);
     color: var(--white);
-    padding: 5px 12px;
+    padding: 10px 12px;
     box-sizing: border-box;
     white-space: nowrap;
     overflow: hidden;
@@ -730,7 +733,7 @@ input:checked + .slider:before {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 10px;
-    padding: 30px 13px;
+    padding: 40px 13px 13px 13px;
     position: relative;
     top: 41%;
     left: 50%;
@@ -750,8 +753,21 @@ input:checked + .slider:before {
     position: relative;
 }
 
+.card:first-child::before {
+    content: "ONTDEKKEN";
+    position: absolute;
+    top: -28px;
+    left: 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--black-80);
+}
+.card:hover {
+    box-shadow: 0 4px 10px var(--black-40);
+}
+
 .card:not(.span-2) {
-    aspect-ratio: 1/1;
+    aspect-ratio: 1;
 }
 
 .span-2 {
@@ -760,17 +776,17 @@ input:checked + .slider:before {
     background-position: center;
     display: flex;
     flex-direction: column;
-    height: 100%;
     align-items: flex-start;
     justify-content: flex-end;
-    padding: 0px 20px;
+    height: 100%;
+    padding: 0 20px;
 }
 
 .card:not(.span-2) img {
     width: 100%;
     height: 50%;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     object-fit: cover;
 }
 
@@ -797,9 +813,6 @@ input:checked + .slider:before {
     margin-left: 0;
 }
 
-.card:hover {
-    box-shadow: 0 4px 10px var(--black-60);
-}
 
 .card:not(.span-2) .card-title {
     margin: 0 15px;
@@ -828,6 +841,7 @@ input:checked + .slider:before {
 .card-footer i {
     cursor: pointer;
     font-size: 0.9rem;
+    user-select: none;
 }
 
 .card:hover img,
@@ -840,14 +854,15 @@ input:checked + .slider:before {
 }
 
 .span-id-2 {
-    background-image: url(https://th.bing.com/th?id=ORMS.1281e7f3492a6f62e83c98da50570bce&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1&p=0);
+    background-image: url(https://th.bing.com/th?id=ORMS.1281e7f3492a6f62e83c98da50570bce&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1&p=0) !important;
 }
 
 .span-id-3 {
     background-image: url(https://th.bing.com/th?id=ORMS.664cd9f0d6bc04481f48be1d561132ca&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1&p=0);
 }
 
-.span-id-4 {
+.span-id-4,
+.span-id-2 {
     position: relative;
     background-image: url(https://th.bing.com/th?id=ORMS.b5a48820686fe5d5c7348629c6ce4a0a&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1&p=0);
     background-size: cover;
@@ -856,14 +871,19 @@ input:checked + .slider:before {
     overflow: hidden;
 }
 
-.span-id-4::before {
+.span-id-4::before,
+.span-id-2::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(transparent 10%, var(--black));
+    background: linear-gradient(transparent 10%, var(--black-60));
     border-radius: inherit;
     pointer-events: none;
+}
+
+.span-id-2::before {
+    background: linear-gradient(transparent 10%, var(--black-50));
 }

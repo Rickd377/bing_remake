@@ -75,15 +75,44 @@ document.addEventListener('DOMContentLoaded', () => {
             updateSlider();
         }
     });
+
+    document.querySelectorAll('.card').forEach(item => {
+        const likeButton = item.querySelector('.far.fa-thumbs-up');
+        const dislikeButton = item.querySelector('.far.fa-thumbs-down');
+    
+        if (likeButton) {
+            likeButton.addEventListener('click', () => {
+                likeButton.classList.toggle('far');
+                likeButton.classList.toggle('fas');
+    
+                if (dislikeButton && dislikeButton.classList.contains('fas')) {
+                    dislikeButton.classList.remove('fas');
+                    dislikeButton.classList.add('far');
+                }
+            });
+        }
+    
+        if (dislikeButton) {
+            dislikeButton.addEventListener('click', () => {
+                dislikeButton.classList.toggle('far');
+                dislikeButton.classList.toggle('fas');
+    
+                if (likeButton && likeButton.classList.contains('fas')) {
+                    likeButton.classList.remove('fas');
+                    likeButton.classList.add('far');
+                }
+            });
+        }
+    });
 });
 
 document.addEventListener('scroll', function() {
     const searchContainer = document.querySelector('.search-container');
     const scrollPosition = window.scrollY;
 
-    if (scrollPosition > 0) {
-        searchContainer.style.top = '7%'; // Top value when scrolling
+    if (scrollPosition > 0 ) {
+        searchContainer.style.top = '8%'; // Top value when scrolling
     } else {
-        searchContainer.style.top = '18%'; // Top value on the landing page
+        searchContainer.style.top = '20%'; // Top value on the landing page
     }
 });
