@@ -47,23 +47,36 @@ $result_grid = $conn->query($sql_grid);
             <div class="copilot-logo">
                 <img src="assets/copilot.webp" alt="">
                 <a href="https://copilot.microsoft.com/" target="_blank">Copilot</a>
-                <a href="https://www.msn.com/nl-nl?ocid=BHEA000" target="_blank">MSN</a>
-                <a href="https://www.msn.com/nl-nl/play?ocid=cgbinghp" target="_blank">Online Games</a>
-                <div class="dropdown-submenu">
-                    <a href="#" class="item-m">Microsoft 365 <i class="fa-solid fa-angle-right"></i></a>
-                    <div class="dropdown-submenu-content">
-                        <a href="//outlook.com/?WT.mc_id=O16_BingHP" target="_blank">Outlook</a>
-                        <a href="//microsoft365.com/start/Word.aspx?WT.mc_id=O16_BingHP" target="_blank">Word</a>
-                        <a href="//microsoft365.com/start/Excel.aspx?WT.mc_id=O16_BingHP" target="_blank">Excel</a>
-                        <a href="//microsoft365.com/start/PowerPoint.aspx?WT.mc_id=O16_BingHP"
-                            target="_blank">PowerPoint</a>
-                        <a href="//www.onenote.com/notebooks?WT.mc_id=O16_BingHP" target="_blank">OneNote</a>
-                        <a href="//sway.office.com?WT.mc_id=O16_BingHP&utm_source=O16Bing&utm_medium=Nav&utm_campaign=HP"
-                            target="_blank">Sway</a>
-                        <a href="//onedrive.live.com/?gologin=1&WT.mc_id=O16_BingHP" target="_blank">OneDrive</a>
-                        <a href="//calendar.live.com/?WT.mc_id=O16_BingHP" target="_blank">Agenda</a>
-                        <a href="//outlook.live.com/owa/?path=/people&WT.mc_id=O16_BingHP"
-                            target="_blank">Personen</a>
+            </div>
+            <a href="#">Afbeeldingen</a>
+            <a href="#">Video's</a>
+            <a href="#">Winkelen</a>
+            <a href="#">Kaarten</a>
+            <a href="#">Nieuws</a>
+            <div class="dropdown">
+                <i class="fa-solid fa-ellipsis dropdownBtn"></i>
+                <div class="dropdown-content">
+                    <a href="https://www.bing.com/search?q=Bing+translate&FORM=TTAHP1" target="_blank">Vertalen</a>
+                    <a href="https://www.bing.com/travel?FORM=TGHPNT&entrypoint=TGHPNT" class="reis"
+                        target="_blank">Reis</a>
+                    <a href="https://www.msn.com/nl-nl?ocid=BHEA000" target="_blank">MSN</a>
+                    <a href="https://www.msn.com/nl-nl/play?ocid=cgbinghp" target="_blank">Online Games</a>
+                    <div class="dropdown-submenu">
+                        <a href="#" class="item-m">Microsoft 365 <i class="fa-solid fa-angle-right"></i></a>
+                        <div class="dropdown-submenu-content">
+                            <a href="//outlook.com/?WT.mc_id=O16_BingHP" target="_blank">Outlook</a>
+                            <a href="//microsoft365.com/start/Word.aspx?WT.mc_id=O16_BingHP" target="_blank">Word</a>
+                            <a href="//microsoft365.com/start/Excel.aspx?WT.mc_id=O16_BingHP" target="_blank">Excel</a>
+                            <a href="//microsoft365.com/start/PowerPoint.aspx?WT.mc_id=O16_BingHP"
+                                target="_blank">PowerPoint</a>
+                            <a href="//www.onenote.com/notebooks?WT.mc_id=O16_BingHP" target="_blank">OneNote</a>
+                            <a href="//sway.office.com?WT.mc_id=O16_BingHP&utm_source=O16Bing&utm_medium=Nav&utm_campaign=HP"
+                                target="_blank">Sway</a>
+                            <a href="//onedrive.live.com/?gologin=1&WT.mc_id=O16_BingHP" target="_blank">OneDrive</a>
+                            <a href="//calendar.live.com/?WT.mc_id=O16_BingHP" target="_blank">Agenda</a>
+                            <a href="//outlook.live.com/owa/?path=/people&WT.mc_id=O16_BingHP"
+                                target="_blank">Personen</a>
+                        </div>
                     </div>
                 </div>
             </div>
