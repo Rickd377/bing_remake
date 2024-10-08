@@ -1,17 +1,6 @@
 <?php
-// Database connection
-$servername = "localhost";
-$username = "root"; // Change if necessary
-$password = ""; // Change if necessary
-$dbname = "slider_db";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+session_start();
+include 'db_connection.php'; // Include your database connection file
 
 // Fetch data for slider
 $sql_slider = "SELECT title, image_url FROM slider_items";
@@ -34,7 +23,7 @@ $result_grid = $conn->query($sql_grid);
 </head>
 <body>
     <header>
-    <div class="header-left">
+        <div class="header-left">
             <div class="bing-logo">
                 <div class="microsoft-logo">
                     <div class="square red"></div>
@@ -83,10 +72,17 @@ $result_grid = $conn->query($sql_grid);
         </div>
         <div class="header-right">
             <a href="#">English</a>
-            <a href="#" class="aanmelden">
-                <p>Aanmelden</p>
-                <img class="profile-img" src="assets/default-pfp-d.webp" alt="">
-            </a>
+            <?php if (isset($_SESSION['user_id'])): ?>
+                <a href="logout.php" class="aanmelden">
+                    <p>Logout</p>
+                    <img class="profile-img" src="assets/default-pfp-d.webp" alt="">
+                </a>
+            <?php else: ?>
+                <a href="signin.php" class="aanmelden">
+                    <p>Aanmelden</p>
+                    <img class="profile-img" src="assets/default-pfp-d.webp" alt="">
+                </a>
+            <?php endif; ?>
             <a href="#" class="rewards">
                 <p>0</p>
                 <i class="fa-solid fa-trophy"></i>

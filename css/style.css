@@ -780,6 +780,7 @@ input:checked + .slider:before {
     justify-content: flex-end;
     height: 100%;
     padding: 0 20px;
+    overflow: hidden;
 }
 
 .card:not(.span-2) img {
@@ -836,6 +837,14 @@ input:checked + .slider:before {
     margin-left: 15px;
     position: absolute;
     bottom: 5px;
+}
+
+.span-2 img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    object-fit: cover;
 }
 
 .card-footer i {
