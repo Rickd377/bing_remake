@@ -34,8 +34,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
-<form method="POST" action="signin.php">
-    <input type="text" name="username" placeholder="Username" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <button type="submit">Sign In</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="signin-container">
+        <form class="signin-form" method="POST" action="signin.php">
+            <h2>Sign In</h2>
+            <input type="text" name="username" placeholder="Username" required autocomplete="off">
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Sign In</button>
+            <a href="register.php">Don't have an account? <span>Register here</span></a>
+        </form>
+    </div>
+</body>
+</html>
