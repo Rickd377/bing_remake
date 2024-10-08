@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const backgrounds = [
         '',
-        'url(../assets/backgrounds/background-one.webp)',
-        'url(../assets/backgrounds/background-two.webp)',
-        'url(../assets/backgrounds/background-three.webp)',
-        'url(../assets/backgrounds/background-four.webp)'
+        'url(assets/backgrounds/background-one.webp)',
+        'url(assets/backgrounds/background-two.webp)',
+        'url(assets/backgrounds/background-three.webp)',
+        'url(assets/backgrounds/background-four.webp)'
     ];
     let currentBackgroundIndex = 0;
 

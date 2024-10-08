@@ -896,3 +896,63 @@ input:checked + .slider:before {
 .span-id-2::before {
     background: linear-gradient(transparent 10%, var(--black-50));
 }
+
+.display-items {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.items-wrapper {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+}
+
+.items-wrapper h3 {
+    margin-top: 0;
+}
+
+.items-row {
+    display: flex;
+    flex-direction: column-reverse;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.items-row li {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+}
+
+.input-wrapper form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.check {
+    display: flex;
+    align-items: center;
+}
+
+.general-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    margin-bottom: 50px;
+}

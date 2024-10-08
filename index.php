@@ -270,7 +270,7 @@ $result_grid = $conn->query($sql_grid);
         ?>
     </div>
 
-    <script src="js/script.js"></script>
     <script src="js/background.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
