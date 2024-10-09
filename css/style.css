@@ -857,30 +857,12 @@ input:checked + .slider:before {
 .span-2:hover {
     filter: brightness(0.95);
 }
-
-.span-id-1 {
-    background-image: url(https://th.bing.com/th?id=ORMS.72737d727a9a865def82a581f2b62caf&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1&p=0);
-}
-
-.span-id-2 {
-    background-image: url(https://th.bing.com/th?id=ORMS.1281e7f3492a6f62e83c98da50570bce&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1&p=0) !important;
-}
-
-.span-id-3 {
-    background-image: url(https://th.bing.com/th?id=ORMS.664cd9f0d6bc04481f48be1d561132ca&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1&p=0);
-}
-
-.span-id-4,
 .span-id-2 {
     position: relative;
-    background-image: url(https://th.bing.com/th?id=ORMS.b5a48820686fe5d5c7348629c6ce4a0a&pid=Wdp&w=612&h=304&qlt=90&c=1&rs=1&dpr=1&p=0);
-    background-size: cover;
-    background-position: center;
     border-radius: 10px;
     overflow: hidden;
 }
 
-.span-id-4::before,
 .span-id-2::before {
     content: '';
     position: absolute;
@@ -936,7 +918,7 @@ input:checked + .slider:before {
 .input-wrapper {
     display: flex;
     flex-direction: column;
-    width: 15%;
+    width: 30%;
 }
 
 .input-wrapper form {

@@ -52,7 +52,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $upload_time = $_POST['upload_time'];
         $likes = $_POST['likes'];
         $comments = $_POST['comments'];
-        $span_class = isset($_POST['span_2']) ? 'span-2' : '';
+        $span_class = '';
+        if (isset($_POST['span_2'])) {
+            $span_class .= 'span-2 ';
+        }
+        if (isset($_POST['span_id_2'])) {
+            $span_class .= 'span-id-2';
+        }
         $sql = "INSERT INTO grid_items (title, image_url, upload_time, likes, comments, span_class) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param('sssiss', $title, $image_url, $upload_time, $likes, $comments, $span_class);
@@ -125,15 +131,19 @@ $grid_items = $conn->query("SELECT * FROM grid_items");
                 <input type="text" id="title" name="title" required>
                 <label for="image_url">Image URL:</label>
                 <input type="text" id="image_url" name="image_url">
-                <label for="upload_time">Upload Time:</label>
+                <label for="upload_time">(Don't add if span-2) Upload Time:</label>
                 <input type="text" id="upload_time" name="upload_time">
                 <label for="likes">Likes:</label>
                 <input type="number" id="likes" name="likes">
                 <label for="comments">Comments:</label>
                 <input type="number" id="comments" name="comments">
                 <div class="check">
-                    <label for="span_2">Span 2:</label>
+                    <label for="span_2">(Don't add if normal) Span 2:</label>
                     <input type="checkbox" id="span_2" name="span_2">
+                </div>
+                <div class="check">
+                    <label for="span_id_2">(Don't add if normal) Gradient:</label>
+                    <input type="checkbox" id="span_id_2" name="span_id_2">
                 </div>
                 <button type="submit" name="add_grid">Add Grid Item</button>
             </form>
@@ -157,7 +167,7 @@ $grid_items = $conn->query("SELECT * FROM grid_items");
         </div>
         <div class="items-wrapper">
             <h3>Current Grid Items</h3>
-            <ul class="items-row">
+            <ul class="items-row grid">
                 <?php while ($row = $grid_items->fetch_assoc()): ?>
                     <li><?php echo $row['id'] . ': ' . $row['title']; ?></li>
                 <?php endwhile; ?>
