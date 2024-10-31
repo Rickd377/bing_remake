@@ -20,68 +20,8 @@ if (!$user['is_admin']) {
     exit();
 }
 
-function parse_ids($input)
-{
-    $ids = [];
-    $parts = explode(',', $input);
-    foreach ($parts as $part) {
-        $part = trim($part);
-        if (strpos($part, '-') !== false) {
-            list($start, $end) = explode('-', $part);
-            $start = (int)trim($start);
-            $end = (int)trim($end);
-            $ids = array_merge($ids, range($start, $end));
-        } else {
-            $ids[] = (int)$part;
-        }
-    }
-    return $ids;
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['add_slider'])) {
-        $title = $_POST['title'];
-        $image_url = $_POST['image_url'];
-        $sql = "INSERT INTO slider_items (title, image_url) VALUES (?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('ss', $title, $image_url);
-        $stmt->execute();
-    } elseif (isset($_POST['add_grid'])) {
-        $title = $_POST['title'];
-        $image_url = $_POST['image_url'];
-        $upload_time = $_POST['upload_time'];
-        $likes = $_POST['likes'];
-        $comments = $_POST['comments'];
-        $span_class = '';
-        if (isset($_POST['span_2'])) {
-            $span_class .= 'span-2 ';
-        }
-        if (isset($_POST['span_id_2'])) {
-            $span_class .= 'span-id-2';
-        }
-        $sql = "INSERT INTO grid_items (title, image_url, upload_time, likes, comments, span_class) VALUES (?, ?, ?, ?, ?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('sssiss', $title, $image_url, $upload_time, $likes, $comments, $span_class);
-        $stmt->execute();
-    } elseif (isset($_POST['delete_slider'])) {
-        $ids = parse_ids($_POST['ids']);
-        $placeholders = implode(',', array_fill(0, count($ids), '?'));
-        $sql = "DELETE FROM slider_items WHERE id IN ($placeholders)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param(str_repeat('i', count($ids)), ...$ids);
-        $stmt->execute();
-    } elseif (isset($_POST['delete_grid'])) {
-        $ids = parse_ids($_POST['ids']);
-        $placeholders = implode(',', array_fill(0, count($ids), '?'));
-        $sql = "DELETE FROM grid_items WHERE id IN ($placeholders)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param(str_repeat('i', count($ids)), ...$ids);
-        $stmt->execute();
-    }
-}
-
 $slider_items = $conn->query("SELECT * FROM slider_items");
-$grid_items = $conn->query("SELECT * FROM grid_items");
+$grid_items = $conn->query("SELECT * FROM grid_items ORDER BY `order` ASC");
 ?>
 
 <!DOCTYPE html>
@@ -99,81 +39,179 @@ $grid_items = $conn->query("SELECT * FROM grid_items");
             background-color: whitesmoke;
             background-image: none;
             overflow-x: hidden;
+            padding: 0;
+        }
+        .general-container {
+            width: 100%;
+            margin: 0 auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            left: 0;
+        }
+        .items-wrapper {
+            margin-bottom: 20px;
+        }
+        .items-wrapper h3 {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+        .items-wrapper button {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #2f5de6;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .items-wrapper button:hover {
+            background-color: #254bb5;
+        }
+        .items-row {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        .items-row li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .items-row li .edit-button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #2f5de6;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        .items-row li .edit-button:hover {
+            background-color: #254bb5;
+        }
+        .items-row li .select-checkbox {
+            margin-right: 10px;
+        }
+        .items-row li.selected {
+            background-color: #e0e0e0;
+        }
+        .item-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .item-details span {
+            margin-bottom: 5px;
+        }
+
+        .change-button {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #2f5de6;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .change-button:hover {
+            background-color: #254bb5;
         }
     </style>
 </head>
 
 <body>
+    <button class="change-button" onclick="switchItems()">Confirm Switch</button>
     <div class="general-container">
-        <div class="input-wrapper">
-            <h2>Admin Dashboard</h2>
-            <a href="logout.php">Logout</a><br><br>
-            <h3>Add Slider Item</h3>
-            <form method="post" action="admin.php">
-                <label for="title">Title:</label>
-                <input type="text" id="title" name="title" required>
-                <label for="image_url">Image URL:</label>
-                <input type="text" id="image_url" name="image_url" required>
-                <button type="submit" name="add_slider">Add Slider Item</button>
-            </form>
-            <h3>Delete Slider Items</h3>
-            <form method="post" action="admin.php">
-                <label for="ids">IDs (comma-separated or range):</label>
-                <input type="text" id="ids" name="ids" required>
-                <button type="submit" name="delete_slider">Delete Slider Items</button>
-            </form>
-        </div>
-
-        <div class="input-wrapper">
-            <h3>Add Grid Item</h3>
-            <form method="post" action="admin.php">
-                <label for="title">Title:</label>
-                <input type="text" id="title" name="title" required>
-                <label for="image_url">Image URL:</label>
-                <input type="text" id="image_url" name="image_url">
-                <label for="upload_time">(Don't add if span-2) Upload Time:</label>
-                <input type="text" id="upload_time" name="upload_time">
-                <label for="likes">Likes:</label>
-                <input type="number" id="likes" name="likes">
-                <label for="comments">Comments:</label>
-                <input type="number" id="comments" name="comments">
-                <div class="check">
-                    <label for="span_2">(Don't add if normal) Span 2:</label>
-                    <input type="checkbox" id="span_2" name="span_2">
-                </div>
-                <div class="check">
-                    <label for="span_id_2">(Don't add if normal) Gradient:</label>
-                    <input type="checkbox" id="span_id_2" name="span_id_2">
-                </div>
-                <button type="submit" name="add_grid">Add Grid Item</button>
-            </form>
-
-            <h3>Delete Grid Items</h3>
-            <form method="post" action="admin.php">
-                <label for="ids">IDs (comma-separated or range):</label>
-                <input type="text" id="ids" name="ids" required>
-                <button type="submit" name="delete_grid">Delete Grid Items</button>
-            </form>
-        </div>
-    </div>
-    <div class="display-items">
         <div class="items-wrapper">
             <h3>Current Slider Items</h3>
-            <ul class="items-row">
+            <button onclick="location.href='add_item.php?type=slider'">Add New Slider Item</button>
+            <ul class="items-row" id="slider-items">
                 <?php while ($row = $slider_items->fetch_assoc()): ?>
-                    <li><?php echo $row['id'] . ': ' . $row['title']; ?></li>
+                    <li data-id="<?php echo $row['id']; ?>">
+                        <input type="checkbox" class="select-checkbox">
+                        <div class="item-details">
+                            <span>ID: <?php echo $row['id']; ?></span>
+                            <span>Title: <?php echo $row['title']; ?></span>
+                            <span>Image URL: <?php echo $row['image_url']; ?></span>
+                        </div>
+                        <button class="edit-button" onclick="location.href='edit_item.php?type=slider&id=<?php echo $row['id']; ?>'">Edit</button>
+                    </li>
                 <?php endwhile; ?>
             </ul>
         </div>
         <div class="items-wrapper">
             <h3>Current Grid Items</h3>
-            <ul class="items-row grid">
+            <button onclick="location.href='add_item.php?type=grid'">Add New Grid Item</button>
+            <ul class="items-row grid" id="grid-items">
                 <?php while ($row = $grid_items->fetch_assoc()): ?>
-                    <li><?php echo $row['id'] . ': ' . $row['title']; ?></li>
+                    <li data-id="<?php echo $row['id']; ?>">
+                        <input type="checkbox" class="select-checkbox">
+                        <div class="item-details">
+                            <span>ID: <?php echo $row['id']; ?></span>
+                            <span>Title: <?php echo $row['title']; ?></span>
+                            <span>Span Class: <?php echo $row['span_class']; ?></span>
+                            <span>Image URL: <?php echo $row['image_url']; ?></span>
+                        </div>
+                        <button class="edit-button" onclick="location.href='edit_item.php?type=grid&id=<?php echo $row['id']; ?>'">Edit</button>
+                    </li>
                 <?php endwhile; ?>
             </ul>
         </div>
     </div>
+    <script>
+        function switchItems() {
+            const checkboxes = document.querySelectorAll('.select-checkbox:checked');
+            if (checkboxes.length === 2) {
+                const li1 = checkboxes[0].parentElement;
+                const li2 = checkboxes[1].parentElement;
+                const parent = li1.parentElement;
+
+                const index1 = Array.from(parent.children).indexOf(li1);
+                const index2 = Array.from(parent.children).indexOf(li2);
+
+                if (index1 > index2) {
+                    parent.insertBefore(li1, li2);
+                } else {
+                    parent.insertBefore(li2, li1);
+                }
+
+                updateOrder(parent);
+                checkboxes.forEach(checkbox => checkbox.checked = false);
+            } else {
+                alert('Please select exactly two items to switch.');
+            }
+        }
+
+        function updateOrder(container) {
+            const items = container.querySelectorAll('li');
+            const order = Array.from(items).map((item, index) => ({
+                id: item.getAttribute('data-id'),
+                order: index + 1
+            }));
+
+            fetch('update_order.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ order })
+            });
+        }
+    </script>
 </body>
 
 </html>

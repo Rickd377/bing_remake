@@ -7,7 +7,7 @@ $sql_slider = "SELECT title, image_url FROM slider_items";
 $result_slider = $conn->query($sql_slider);
 
 // Fetch data for grid
-$sql_grid = "SELECT title, image_url, upload_time, likes, comments, span_class FROM grid_items";
+$sql_grid = "SELECT title, image_url, upload_time, likes, comments, span_class, `order` FROM grid_items ORDER BY `order` ASC";
 $result_grid = $conn->query($sql_grid);
 ?>
 
@@ -22,7 +22,7 @@ $result_grid = $conn->query($sql_grid);
     <title>Bing</title>
 </head>
 <body>
-    <header>
+<header>
         <div class="header-left">
             <div class="bing-logo">
                 <div class="microsoft-logo">
