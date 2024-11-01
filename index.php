@@ -232,8 +232,6 @@ $result_grid = $conn->query($sql_grid);
                         echo '<img src="' . $row["image_url"] . '" alt="Item">';
                         echo '</div>';
                     }
-                } else {
-                    echo "0 results";
                 }
                 ?>
             </div>
